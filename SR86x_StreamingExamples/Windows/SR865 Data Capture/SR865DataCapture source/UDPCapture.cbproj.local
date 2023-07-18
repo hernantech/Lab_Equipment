@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2013/06/25 13:07:30.000.057,=C:\Users\ichan\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>2013/06/25 13:07:30.000.048,=C:\Users\ichan\Documents\RAD Studio\Projects\Project1.res</Transaction>
+    <Transaction>2014/01/31 17:34:13.000.417,=C:\Users\ichan\Documents\RAD Studio\Projects\Project1.res</Transaction>
+    <Transaction>2014/01/31 17:34:13.000.428,=C:\Users\ichan\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>2014/01/31 17:34:27.000.145,=C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\Unit1.cpp</Transaction>
+    <Transaction>2014/01/31 17:35:13.000.044,C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\Project1.cbproj=C:\Users\ichan\Documents\RAD Studio\Projects\Project1.cbproj</Transaction>
+    <Transaction>2014/02/03 09:14:11.000.978,=C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\Unit2.cpp</Transaction>
+    <Transaction>2014/02/03 09:20:22.000.397,C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\Unit2.cpp=C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\UDPServerThread.cpp</Transaction>
+    <Transaction>2014/02/03 09:20:22.000.397,C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\Unit2.h=C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\UDPServerThread.h</Transaction>
+    <Transaction>2014/02/04 15:18:07.000.776,C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\UDPCapture.cbproj=C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\Project1.cbproj</Transaction>
+    <Transaction>2014/06/17 11:53:57.000.776,=C:\Users\ichan\Documents\RAD Studio\Projects\PacketDataReader\PacketHeader.cpp</Transaction>
+    <Transaction>2014/06/17 11:55:39.000.996,C:\Users\ichan\Documents\RAD Studio\Projects\PacketDataReader\PacketHeader.cpp=</Transaction>
+    <Transaction>2014/06/17 11:55:50.000.128,=C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\PacketHeader.cpp</Transaction>
+    <Transaction>2014/12/02 11:43:06.000.693,=C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\Unit2.cpp</Transaction>
+    <Transaction>2014/12/02 11:48:59.000.504,C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\Unit2.h=C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\vxi11.h</Transaction>
+    <Transaction>2014/12/02 11:48:59.000.504,C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\Unit2.cpp=C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\vxi11.cpp</Transaction>
+    <Transaction>2014/12/02 11:49:31.000.587,C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\vxi11.cpp=C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\vxi11.cpp</Transaction>
+    <Transaction>2014/12/02 11:49:31.000.587,C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\vxi11.h=C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\vxi11.h</Transaction>
+    <Transaction>2014/12/03 10:52:55.000.651,=C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\vxi11.cpp</Transaction>
+    <Transaction>2014/12/03 10:52:55.000.648,=C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\rpc.cpp</Transaction>
+    <Transaction>2014/12/03 10:52:55.000.654,=C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\xdr.cpp</Transaction>
+    <Transaction>2014/12/03 10:53:15.000.669,C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\vxi11.h=</Transaction>
+    <Transaction>2015/02/17 17:11:43.000.155,=C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\Checksum.cpp</Transaction>
+    <Transaction>2015/06/03 10:25:31.000.720,C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\Checksum.cpp=</Transaction>
+    <Transaction>2015/06/03 10:42:20.000.927,=C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\FileThread.cpp</Transaction>
+    <Transaction>2015/06/30 17:58:54.000.953,C:\Users\ichan\Documents\RAD Studio\Projects\UDPClient\FileThread.cpp=</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="PacketHeader.cpp"/>
+    <File Path="PacketHeader.cpp"/>
+    <File Path="PacketHeader.h"/>
+    <File Path="rpc.cpp"/>
+    <File Path="SR865DataCapture.cpp"/>
+    <File Path="SR865DataCapture.res"/>
+    <File Path="UDPServerThread.cpp"/>
+    <File Path="UDPServerThread.cpp"/>
+    <File Path="UDPServerThread.h"/>
+    <File Path="Unit1.cpp"/>
+    <File Path="Unit1.cpp"/>
+    <File Path="Unit1.dfm"/>
+    <File Path="Unit1.h"/>
+    <File Path="vxi11.cpp"/>
+    <File Path="vxi11.cpp"/>
+    <File Path="vxi11.h"/>
+    <File Path="xdr.cpp"/>
+  </ProjectSortOrder>
+</BorlandProject>

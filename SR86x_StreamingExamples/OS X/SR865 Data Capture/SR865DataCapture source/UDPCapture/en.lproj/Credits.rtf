@@ -1,0 +1,111 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\vieww9600\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+
+\f0\b\fs24 \cf0 Description:
+\b0 \
+SR865 Data Capture captures streaming data from the SRS865 lock-in amplifier and writes it to disk.\
+\
+First, you need to enter the SR865's IP address and Connect to it.\
+The instrument identity will be reported in the textbox below.\
+\
+Next, you can select the data to be streamed\expnd0\expndtw0\kerning0
+, the sample rate, and the UDP port to use.\
+The Checksum option enables UDP checksum computation to ensure data integrity, and is recommended.\
+Click "Start" to start data streaming from the SR865 to the client computer.\kerning1\expnd0\expndtw0 \
+\expnd0\expndtw0\kerning0
+Note: You may have change your computer's firewall to allow traffic on the specified UDP port.\
+\
+The data received will be displayed in the textboxes below.\
+If the What textbox turns red, it indicates that the data is overloaded, or there is an error (e.g. external reference unlock).\
+\
+Data Rate shows the amount of UDP traffic received, and may be as high as 20MB/s.\
+\kerning1\expnd0\expndtw0 If the Data Rate display is green, the data rate is at normal ethernet (10Mbps) speeds.\
+If the Data Rate display is orange, the data rate is at fast ethernet (100Mbps) speeds.\
+If the Data Rate dsiplay is red, the data rate is at gigabit ethernet (1000Mbps) speeds.\
+\
+\expnd0\expndtw0\kerning0
+Below that is the Dropped Packet Indicator.\
+If a missing UDP packet is detected, this Indicator turns red.\kerning1\expnd0\expndtw0 \
+This may be due to insufficient network bandwidth, network congestion, a slow computer, or a slow disk drive.\
+\
+The received data is not saved to disk yet.\
+To do so, click on the "Save" button, or the new file ("...") button.\
+You can save data as raw binary (".dat"), or as text comma-separated values (".csv").\
+\
+At high data rates (> 1MB/s), we recommend saving as raw binary data.\
+This is because the conversion of binary data to text data takes more CPU time and also uses more space on disk (typically 3x more disk space).\
+Raw binary files can be converted to .csv format "offline" with the BinaryFileConverter program.\
+\
+To stop saving data to disk, click the "Pause" button.\
+Clicking "Save" again will resume saving to the same file (data is appended).\
+To save to a new file, click on the new file ("...") button.\
+\
+\
+
+\b Data Format (Raw Data):
+\b0 \
+The saved data is in binary format, and is a native-endian version of the received UDP packet.\
+Each UDP packet contains a 32bit header word, followed by 128-1024 bytes of streamed data (\expnd0\expndtw0\kerning0
+X, XY, R\uc0\u952  or XYR\u952 ).\kerning1\expnd0\expndtw0 \
+The received UDP packets are stored sequentially in the data file, so it is imperative to read the header of each packet to correctly interpret the data.\
+Native-endian means that all the data (including the header) has been converted to the native-endianness of the receiving computer, so no further endian-conversion need be done.\
+\
+
+\i Packet Header
+\i0 \
+The first 32 bit word of the file is the header of the first UDP packet saved.\
+It should be interpreted as an unsigned 32 bit integer.\
+The lower 8bits (mask 0x000000ff) is the UDP packet number.\
+Each successive packet will have a packet number one more than the last packet, modulo 256.\
+This enables detection of dropped packets, if a packet number is more than 1 greater than the last packet.\
+\
+The next 4 bits (mask 0x00000f00) indicates what data is in the packet.\
+0 means X data as 32 bit floating point values,\
+1 means X & Y data as 32 bit floating point values,\
+2 means R & \expnd0\expndtw0\kerning0
+\uc0\u952 \kerning1\expnd0\expndtw0  data as 32 bit floating point values,\
+3 means X, Y, R & \expnd0\expndtw0\kerning0
+\uc0\u952 \kerning1\expnd0\expndtw0  data as 32 bit floating point values,\
+4 means X data as 16 bit integer values,\
+5 means X & Y data as 16 bit integer values,\
+6 means R & \expnd0\expndtw0\kerning0
+\uc0\u952 \kerning1\expnd0\expndtw0  data as 16 bit integer values,\
+7 means X, Y, R & \expnd0\expndtw0\kerning0
+\uc0\u952 \kerning1\expnd0\expndtw0  data as 16 bit integer values.\
+\
+The next 4 bits (mask 0x0000f000) indicates the length of the packet of data.\
+0 means 1024 bytes of data follow the header word (default).\
+1 means 512 bytes of data follow the header word,\
+2 means 256 bytes of data follow the header word, and\
+3 means 128 bytes of data follow the header word.\
+From this, you know where the current packet ends, and where the next packet begins.\
+\
+The next 8 bits (mask 0x00ff0000) indicates the sample rate of the data.\
+0 means a sample rate of 1.25MHz.\
+1 means a sample rate of half that, or 625kHz.\
+2 means a sample rate of half again, or 312.5kHz, etc\
+down to 31, which is a sample rate of approximately 0.58mHz.\
+This sample rate already takes into account the subsampling requested by the user.\
+The sample rate is also affected by the time constant used, and whether Sync filtering is enabled.\
+A long time constant or a long Sync filter period results in a lower sample rate.\
+\
+The upper 8bits (mask 0xff000000) are the status bits.\
+Bit 24 (0x01000000) is the overload bit (integer overload for integer data, or Sync filter overload),\
+bit 25 (0x02000000) is the error bit (reference unlock, or Sync filter period out of range),\
+bit 28 (0x10000000) is the little-endian bit (not relevant for data on disk, since it has been converted to native-endian already), and\
+bit 29 (0x20000000) is the checksum bit (indicating that the packet passed integrity checking).\
+\
+
+\i Data Bytes
+\i0 \
+Following the header word are the data words.\
+The 128-1024 bytes of data may be interpreted as an array of X, XY, R\expnd0\expndtw0\kerning0
+\uc0\u952 , or XYR\u952  data, as specified in the header.\
+Floating-point data is 32 bits (4 bytes) in size, while integer data is 16 bits (2 bytes) in size.\kerning1\expnd0\expndtw0 \
+\
+After the data words, the next 32 bit word is the header for the next packet of data.\
+If there is no loss of data packets, then the packet number of this packet should be 1 larger than the packet number of the last packet.\
+Read the header to properly interpret the data from the next packet, and so on.}
