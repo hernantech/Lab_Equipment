@@ -45,12 +45,15 @@ try:
     import vxi11            # required
 except ImportError:
     print('required python vxi11 library not found. Please install vxi11')
+'''
+removing docopt dependency and command-line interface  
+vvv
 
 try:
     import docopt       # useStr (below) defines the syntax and documents it at the same time.
 except ImportError:
     print('python docopt library not found. Please install docopt or remove the docopt code from test() and main') #pylint: disable=C0301
-
+'''
 
 USE_STR = """
  --Capture Data on an SR865 and save it to a file--
@@ -244,8 +247,13 @@ def enforce_choice(key, d_obj, allowed):
         sys.exit(-1)
     return d_obj[key].upper()
 
+'''
+Below is the dictionary for the options parameter. Values are hardcoded
+'''
+options = {
+    "--address" : "192.168.1.17"
 
-
+}
 def test(options):
     """ the main program -----------------------------------------------
     """
@@ -253,11 +261,11 @@ def test(options):
 
     # group the docopt stuff to make it easier to remove, if desired
     dut_add = options['--address']                # IP address of the SR86x
-    i_wait_count = int(options['--count'])         # how many points to capture
-    f_name = options['--file']                     # file to write, if file name provided
+    i_wait_count = int(1000) #int(options['--count'])         # how many points to capture
+    f_name = str('SR865_' + time.strftime("%H:%M:%S",time.localtime()))                  # file to write, if file name provided
     b_show_status = not options['--silent']
-    b_show_debug = options['--debug']
-    t_timeout = float(options['--wait'])           # give up if >'wait' seconds between points
+    b_show_debug = True
+    t_timeout = float(5)           # give up if 5 seconds between points
 
     s_channels = enforce_choice('--vars', options, ['X', 'XY', 'RT', 'XYRT'])
     s_mode = enforce_choice('--mode', options, ['IMM', 'TRIG', 'SAMP',])
