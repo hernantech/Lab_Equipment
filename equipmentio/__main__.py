@@ -3,7 +3,7 @@ import equipmentioClass as eq
 
 def main():
     try:
-        print("attempting to initialize equipment")
+        print("attempting to initialize Devices")
         equipment = eq(eq.config)
 
     except:
