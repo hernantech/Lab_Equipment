@@ -21,3 +21,12 @@
    - Deciding whether to inherit the class as an object within equipmentIO (accessing via self.config.method_or_parameter)or to inherit all methods and objects (self.inherited_method_or_parameter), which overwrites and requires namechecking
  - Finalizing main class calls
  - deciding to keep/structure with a start.py wrapper or just main
+ - ### develop test suite for vxi-11 to command a stream, send a request, and still collect the data through the entire time
+
+## Priority (1)
+ - Try to get a true data livestream (no time/byte limit), as fast/reliable as possible
+ - Send comments to equipment in parallel (if supported, the communication protocol may not allow this due to locks)
+   - If not possible, try to establish a continuous livestream via TCP/IP
+   - In parallel, send commands via GPIB (to tweak parameters)
+     - If not possible (priority 3)
+       - Create stream composed of chunks and send comments between packages (30ms delay, 10% loss max at 3Hz)

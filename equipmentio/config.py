@@ -8,6 +8,7 @@ class config:
         self.rate = None #integer value of frequency, default is  100 Hz
         self.LockInAmplifier = None #IP addresses of the lock-in amplifiers (SR865)
         self.LockInAmplifier2 = None #IP address for SR860
+
     ## Default mode for no spectrum capture, sets parameters as such
     #
     #
